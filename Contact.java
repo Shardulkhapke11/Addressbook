@@ -10,10 +10,11 @@ public class Contact {
         while(true) {
             System.out.println("Welcome To Address Book Problem\n\n"
                     + "Choose your option:\n"
-                    + "1. Create new Contact\n"
-                    + "2. View all Contacts\n"
-                    + "3. Edit Contact\n"
-                    + "4. Quit\n");
+                    + "1. Create new person\n"
+                    + "2. View all the existing person\n"
+                    + "3. Edit The Exisiting array\n"
+                    + "4. Remove The Person\n"
+                    + "5. Quit\n");
             int option = sc.nextInt();
             sc.nextLine();
             switch(option){
@@ -21,7 +22,7 @@ public class Contact {
                 case 1:
                     AddressBook address = new AddressBook();
 
-                    System.out.print("Enter Your First Name: ");
+                    System.out.print("Enter Your Firstst Name: ");
                     address.setFirstName(sc.nextLine());
 
                     System.out.print("Enter Your Last Name: ");
@@ -48,7 +49,7 @@ public class Contact {
 
                     person.add(address);
                     break;
-                //View Contacts
+                //View all existing person
                 case 2:
 
                     for (AddressBook addPerson : person) {
@@ -56,7 +57,7 @@ public class Contact {
                     }
                     System.out.println("\n\n");
                     break;
-                // edit  contact
+                // edit existing contact
                 case 3:
                     System.out.println("Edit record");
                     System.out.println("Enter name to edit:");
@@ -73,8 +74,24 @@ public class Contact {
                         }
                     }
                     break;
-
+                //Remove person
                 case 4:
+                    System.out.println("remove record");
+                    System.out.println("Enter name to remove:");
+                    for(int i=0;i<person.size();i++){
+                        address=person.get(i);
+                        if(sc.nextLine().equals(address.getFirstName())) {
+                            person.remove(address);
+                            System.out.println("List After removing"+person.toString());
+                        }
+                        else {
+                            System.out.println("User not found");
+                        }
+                    }
+                    break;
+
+
+                case 5:
                     return;
             }
         }

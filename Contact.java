@@ -2,29 +2,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ContactPerson {
+public class Contact {
     public static void main(String[] args) {
 
         List<AddressBook> person = new ArrayList<AddressBook>();
         Scanner sc = new Scanner(System.in);
         while(true) {
-            System.out.println("***Welcome To Address Book ***\n"
+            System.out.println("Welcome To Address Book Problem\n\n"
                     + "Choose your option:\n"
-                    + "1. Create Contact\n"
-                    + "2. View all  Contact\n"
-                    + "3. Quit\n");
+                    + "1. Create new Contact\n"
+                    + "2. View all Contacts\n"
+                    + "3. Edit Contact\n"
+                    + "4. Quit\n");
             int option = sc.nextInt();
             sc.nextLine();
             switch(option){
-                // Create person Contact
+                //Add New Contact
                 case 1:
                     AddressBook address = new AddressBook();
 
                     System.out.print("Enter Your First Name: ");
-                    address.setFirst_name(sc.nextLine());
+                    address.setFirstName(sc.nextLine());
 
                     System.out.print("Enter Your Last Name: ");
-                    address.setLast_name(sc.nextLine());
+                    address.setLastName(sc.nextLine());
+
 
                     System.out.print("Enter Your City: ");
                     address.setCity(sc.nextLine());
@@ -32,31 +34,48 @@ public class ContactPerson {
                     System.out.print("Enter Your State Name: ");
                     address.setState(sc.nextLine());
 
+
                     System.out.print("Enter Your Zip Code: ");
                     address.setZip(sc.nextInt());
 
+
                     System.out.print("Enter Your Phone Number: ");
-                    address.setPhone_number(sc.nextLong());
+                    address.setPhoneNumber(sc.nextLong());
+
 
                     System.out.print("Enter Your Email Id: ");
                     address.setEmail(sc.next());
 
                     person.add(address);
                     break;
+                //View Contacts
                 case 2:
-                    // View All Contacts
-                    System.out.println("First_name\tLast_name\tCity\tState\tZip\tPhone_number\tEmail_id");
+
                     for (AddressBook addPerson : person) {
                         System.out.println(addPerson);
                     }
                     System.out.println("\n\n");
                     break;
+                // edit  contact
                 case 3:
-                    //Quit
+                    System.out.println("Edit record");
+                    System.out.println("Enter name to edit:");
+                    for(int i=0;i<person.size();i++){
+                        address=person.get(i);
+
+                        if(sc.nextLine().equals(address.getFirstName())) {
+                            System.out.println("Enter new city:");
+                            address.setCity(sc.nextLine());
+                            System.out.println("List After is"+person.toString());
+                        }
+                        else {
+                            System.out.println("User not found");
+                        }
+                    }
+                    break;
+
+                case 4:
                     return;
-
-
-
             }
         }
     }
